@@ -1,0 +1,15 @@
+*{
+    text-align: center;
+}
+#container{
+    display: grid;
+    grid-template-columns:1fr 2fr;
+}
+#firstColumn{
+    grid-column-start:1;
+    background-color: aqua;
+}
+#mainColumn{
+    grid-column-start:2;
+    background-color: beige;
+}

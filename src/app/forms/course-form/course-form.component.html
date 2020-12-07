@@ -1,0 +1,15 @@
+<form *ngIf="details">
+    <label>Name: </label>
+    <input type="text" name="name" placeholder="name" [(ngModel)]="details[0].name">
+    <label>Description: </label>
+    <textarea name="description" cols="20" rows="5" placeholder="description"
+        [(ngModel)]="details[0].description"></textarea>
+    <label>Image: </label>
+    <input type="file" (change)="selectImage($event)" accept="image/*">
+    <img *ngIf="selectedImage||details[0].image" [src]="selectedImage ? preview: details[0].image" height="150" alt="">
+    <div class="total"> Total {{details[2]}} students taking this course</div>
+
+    <button *ngIf="formType==='add'" [disabled]="!details[0].name" (click)="submitAdd()">Save</button>
+    <button *ngIf="formType==='edit'" [disabled]="!details[0].name" (click)="submitEdit()">Save</button>
+    <button *ngIf="formType==='edit' && details[2]==0" (click)="submitDelete()">Delete</button>
+</form>

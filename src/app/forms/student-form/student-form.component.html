@@ -1,0 +1,27 @@
+<form *ngIf="details">
+    <div class="wrapper1">
+        <label>Name: </label>
+        <input type="text" name="name" placeholder="name" [(ngModel)]="details[0].name">
+        <label>Phone: </label>
+        <input type="text" name="phone" placeholder="phone" [(ngModel)]="details[0].phone">
+        <label>Email: </label>
+        <input type="text" name="email" placeholder="email" [(ngModel)]="details[0].email">
+        <label>Image: </label>
+        <input type="file" (change)="selectImage($event)" accept="image/*">
+        <img *ngIf="selectedImage||details[0].image" [src]="selectedImage ? preview: details[0].image" height="150"
+            alt="">
+    </div>
+    <div class="wrapper2">
+        <h3>Courses: </h3><br>
+        <div *ngFor="let course of details[2]">
+            <label>
+                <input type="checkbox" [checked]="isChecked(course.id)" (click)="enroll(course)">
+                {{course.name}}
+            </label>
+        </div>
+    </div>
+
+    <button *ngIf="formType==='add'" [disabled]="!details[0].name" (click)="submitAdd()">Save</button>
+    <button *ngIf="formType==='edit'" [disabled]="!details[0].name" (click)="submitEdit()">Save</button>
+    <button *ngIf="formType==='edit'" (click)="submitDelete()">Delete</button>
+</form>

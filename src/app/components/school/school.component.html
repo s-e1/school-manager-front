@@ -1,0 +1,68 @@
+<div id="container">
+    <div id="firstColumn">
+        <h2>Courses <button (click)="addCourse()">+</button></h2>
+        <hr>
+        <app-course *ngFor="let course of courses" [course]="course" (click)="showDetailsCourse(course.id)">
+        </app-course>
+    </div>
+    <div id="secondColumn">
+        <h2>Students <button (click)="addStudent()">+</button></h2>
+        <hr>
+        <app-student *ngFor="let student of students" [student]="student" (click)="showDetailsStudent(student.id)">
+        </app-student>
+    </div>
+    <div id="mainColumn">
+        <h2>Main container</h2>
+        <hr>
+        <!--displays one of following  -->
+
+        <div *ngIf="this.total && mainDisplay==='total'">
+            Total of courses: {{total[0].courses}}
+            <br>
+            Total of students: {{total[0].students}}
+        </div>
+
+        <app-course-form *ngIf="mainDisplay==='course-form'" [details]="detailsCourse" [formType]="formType">
+        </app-course-form>
+
+        <app-student-form *ngIf="mainDisplay==='student-form'" [details]="detailsStudent" [formType]="formType">
+        </app-student-form>
+
+        <div *ngIf="mainDisplay==='details-course'">
+            <button (click)="changeDetailsCourse()" *ngIf="position!==3">Edit</button>
+            <div class="wrapper">
+                <img [src]="detailsCourse[0].image" height="120" alt="">
+                <div>
+                    <h2>{{detailsCourse[0].name}} Course, {{detailsCourse[2]}} students</h2>
+                    <p>{{detailsCourse[0].description}}</p>
+                </div>
+            </div>
+            <hr>
+            <ul class="left">
+                <li *ngFor="let student of detailsCourse[1]">
+                    <img [src]="student.image" height="65" alt="">
+                    {{student.name}}
+                </li>
+            </ul>
+        </div>
+
+        <div *ngIf="mainDisplay==='details-student'">
+            <button (click)="changeDetailsStudent()">Edit</button>
+            <div class="wrapper">
+                <img [src]="detailsStudent[0].image" height="120" alt="">
+                <div>
+                    <h2> {{detailsStudent[0].name}}</h2>
+                    <div>{{detailsStudent[0].phone}}</div>
+                    <div>{{detailsStudent[0].email}}</div>
+                </div>
+            </div>
+            <hr>
+            <ul class="left">
+                <li *ngFor="let course of detailsStudent[1]">
+                    <img [src]="course.image" height="50" alt="">
+                    {{course.name}}<br>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

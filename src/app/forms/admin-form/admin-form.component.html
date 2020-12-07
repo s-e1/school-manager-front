@@ -1,0 +1,26 @@
+<form *ngIf="details">
+    <label>Name: </label>
+    <input type="text" name="name" placeholder="name" [(ngModel)]="details.name">
+    <label>Phone: </label>
+    <input type="text" name="phone" placeholder="phone" [(ngModel)]="details.phone">
+    <label>Email: </label>
+    <input type="text" name="email" placeholder="email" [(ngModel)]="details.email">
+    <label>Role: </label>
+    <select [(ngModel)]="details.role" name='role' [disabled]="id===details.id">
+        <option value="">-- Choose Role --</option>
+        <option value="Owner" disabled>Owner</option>
+        <option value="Manager">Manager</option>
+        <option value="Sales">Sales</option>
+    </select>
+    <label>Image: </label>
+    <input type="file" (change)="selectImage($event)" accept="image/*">
+    <img *ngIf="selectedImage||details.image " [src]="selectedImage ? preview: details.image" height="150" alt="">
+    <label>Password: </label>
+    <input type="text" name="password" placeholder="password" [(ngModel)]="details.password">
+
+    <button *ngIf="formType==='add'" [disabled]="!details.name || !details.role || !details.email || !details.password"
+        (click)="submitAdd()">Save</button>
+    <button *ngIf="formType==='edit'" [disabled]="!details.name || !details.role || !details.email || !details.password"
+        (click)="submitEdit()">Save</button>
+    <button *ngIf="formType==='edit' && id!==details.id" (click)="submitDelete()">Delete</button>
+</form>

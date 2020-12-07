@@ -1,0 +1,16 @@
+<nav>
+    <div>
+        <img src="../../../assets/images/logo.png" alt="logo" style="width:70px;"> |
+        <a routerLink="/school">School</a> |
+        <a routerLink="/administration" *ngIf="role!=='Sales'">Administration |</a>
+    </div>
+    <div class="wrapper right">
+        <div class="container">
+            <div>
+                {{name}}, {{role}}
+            </div>
+            <button (click)='logout()' routerLink="/" class="right">logout</button>
+        </div>
+        <img [src]="img" height="75" alt="">
+    </div>
+</nav>

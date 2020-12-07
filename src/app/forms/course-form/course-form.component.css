@@ -1,0 +1,30 @@
+form {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    padding: 10px;
+}
+
+form * {
+    margin: 5px;
+}
+
+label {
+    text-align: left;
+}
+
+img {
+    grid-column: span 2;
+    justify-self: center;
+}
+.total{
+    text-align: left;
+    grid-column-start: 2;
+    line-height: 4rem;
+}
+
+button {
+    width: 40%;
+    height: 30px;
+    grid-column: span 2;
+    justify-self: center;
+}

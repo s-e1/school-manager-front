@@ -1,0 +1,40 @@
+*{
+    text-align: center;
+}
+#container{
+    display: grid;
+    grid-template-columns:1fr 1fr 2fr;
+}
+#firstColumn{
+    grid-column-start:1;
+    background-color: aqua;
+}
+#secondColumn{
+    grid-column-start:2;
+    background-color: beige;
+}
+#mainColumn{
+    grid-column-start:3;
+    background-color: lightgreen;
+}
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    margin: 5px;
+}
+.wrapper img{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.wrapper div{
+    margin-left: 5px;
+    margin-right: 10px;
+}
+.left, .left *{
+    text-align: left;
+    vertical-align: middle;
+    list-style-type: none;
+}
+.left img{
+    margin: 15px; 
+}

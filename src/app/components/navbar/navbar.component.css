@@ -1,0 +1,27 @@
+nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.right {
+    justify-self: end;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    margin: 0 5px;
+}
+
+img {
+    margin-left: 5px;
+}
+
+.container {
+    display: grid;
+}
+button{
+    height: 20px;
+    width: 65px;
+    margin-right: 5px;
+}

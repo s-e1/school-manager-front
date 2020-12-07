@@ -1,0 +1,18 @@
+<div id="container">
+    <div id="firstColumn">
+        <h2>Administrators <button (click)="addAdministrator()">+</button></h2>
+        <hr>
+        <app-administrator *ngFor="let admin of admins" [admin]="admin" (click)="showDetails(admin)">
+        </app-administrator>
+    </div>
+    <div id="mainColumn">
+        <h2>Main container</h2>
+        <hr>
+        <div *ngIf="total && mainDisplay==='total'">
+            Total of administrators: {{total[0].administraters}}
+        </div>
+
+        <app-admin-form *ngIf="mainDisplay === 'admin-form'" [details]="details" [formType]="formType">
+        </app-admin-form>
+    </div>
+</div>

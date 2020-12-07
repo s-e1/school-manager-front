@@ -1,0 +1,29 @@
+form {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    padding: 20px;
+}
+
+form * {
+    margin: 5px;
+}
+
+label {
+    text-align: left;
+}
+
+input, select {
+    max-width: 500px;
+}
+
+img {
+    grid-column: span 2;
+    justify-self: center;
+}
+
+button {
+    width: 40%;
+    height: 30px;
+    grid-column: span 2;
+    justify-self: center;
+}
