@@ -1,5 +1,3 @@
-// export class Details {
-// }
 export interface DetailsSchool {
     0: DetailsCourse[],
     1: DetailsStudent[],

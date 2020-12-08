@@ -1,18 +1,3 @@
-// import { Component, OnInit } from '@angular/core';
-
-// @Component({
-//   selector: 'app-course-form',
-//   templateUrl: './course-form.component.html',
-//   styleUrls: ['./course-form.component.css']
-// })
-// export class CourseFormComponent implements OnInit {
-
-//   constructor() { }
-
-//   ngOnInit(): void {
-//   }
-
-// }
 import { Component, OnInit, Input } from '@angular/core';
 import { SchoolService } from 'src/app/services/school.service';
 import { DetailsCourse } from 'src/app/models/details.model';

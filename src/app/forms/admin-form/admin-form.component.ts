@@ -1,18 +1,3 @@
-// import { Component, OnInit } from '@angular/core';
-
-// @Component({
-//   selector: 'app-admin-form',
-//   templateUrl: './admin-form.component.html',
-//   styleUrls: ['./admin-form.component.css']
-// })
-// export class AdminFormComponent implements OnInit {
-
-//   constructor() { }
-
-//   ngOnInit(): void {
-//   }
-
-// }
 import { Component, Input, SimpleChanges, OnChanges } from '@angular/core';
 import { SchoolService } from 'src/app/services/school.service';
 import { DetailsAdmin } from 'src/app/models/details.model';
