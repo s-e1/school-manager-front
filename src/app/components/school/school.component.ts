@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SchoolService } from 'src/app/services/school.service';
 import { HttpClient } from "@angular/common/http";
 import { DetailsCourse, DetailsStudent, Total, Student } from 'src/app/models/details.model';
+import { environment } from '../../../environments/environment';
 
 @Component({
     selector: 'app-school',
@@ -17,6 +18,8 @@ export class SchoolComponent implements OnInit {
     detailsStudent: Student;
     formType: string = undefined;//determines if form is 'add' or 'edit'
     position: number;//type of admin
+    url = environment.url;
+
     constructor(private schoolService: SchoolService, private http: HttpClient) { }
 
     ngOnInit(): void {
@@ -55,7 +58,7 @@ export class SchoolComponent implements OnInit {
         this.mainDisplay = 'student-form';
     }
     showDetailsCourse(courseId: number) {
-        return this.http.get(`http://localhost:3001/course/${courseId}`).subscribe(data => {
+        return this.http.get(`${this.url}/course/${courseId}`).subscribe(data => {
             this.detailsCourse = data;
             this.mainDisplay = 'details-course';
             window.scroll(0, 0);
@@ -67,7 +70,7 @@ export class SchoolComponent implements OnInit {
     }
 
     showDetailsStudent(studentId: number) {
-        return this.http.get<Student>(`http://localhost:3001/student/${studentId}`).subscribe(data => {
+        return this.http.get<Student>(`${this.url}/student/${studentId}`).subscribe(data => {
             this.detailsStudent = data;
             this.mainDisplay = 'details-student';
             window.scroll(0, 0);

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Injectable({
     providedIn: 'root'
@@ -17,6 +18,7 @@ export class SchoolService {
     adminsSource: BehaviorSubject<any>;
     admins: Observable<object>;
 
+    url = environment.url;
 
     constructor(private http: HttpClient, private router: Router) {
         this.userSource = new BehaviorSubject<any>('');
@@ -42,7 +44,7 @@ export class SchoolService {
     }
 
     loginService(email: string, password: string) {
-        return this.http.post('http://localhost:3001/login', { email, password })
+        return this.http.post(`${this.url}/login`, { email, password })
             .subscribe(data => {
                 this.router.navigate(['/school']);
                 this.userSource.next(data);
@@ -65,11 +67,11 @@ export class SchoolService {
             });
     }
     getSchoolRequest() {
-        return this.http.get('http://localhost:3001/school')
+        return this.http.get(`${this.url}/school`)
     }
 
     getAllAdmins() {
-        return this.http.get('http://localhost:3001/administration')
+        return this.http.get(`${this.url}/administration`)
             .subscribe(data => {
                 this.adminsSource.next(data);
             }, (err) => {
@@ -78,7 +80,7 @@ export class SchoolService {
     }
 
     addAdmin(data: any) {
-        return this.http.post('http://localhost:3001/admin', data)
+        return this.http.post(`${this.url}/admin`, data)
             .subscribe(res => {
                 res[2] = "total";//what to display in main area
                 this.adminsSource.next(res);
@@ -88,7 +90,7 @@ export class SchoolService {
     }
 
     editAdmin(data: any) {
-        return this.http.put('http://localhost:3001/admin', data)
+        return this.http.put(`${this.url}/admin`, data)
             .subscribe(res => {
                 res[2] = "total";//what to display in main area
                 this.adminsSource.next(res);
@@ -98,7 +100,7 @@ export class SchoolService {
     }
 
     deleteAdmin(id: number) {
-        return this.http.delete(`http://localhost:3001/admin/${id}`)
+        return this.http.delete(`${this.url}/admin/${id}`)
             .subscribe(res => {
                 res[2] = "total";//what to display in main area
                 this.adminsSource.next(res);
@@ -108,7 +110,7 @@ export class SchoolService {
     }
 
     addCourse(data: any) {
-        return this.http.post('http://localhost:3001/course', data)
+        return this.http.post(`${this.url}/course`, data)
             .subscribe(res => {
                 this.getSchoolRequest().subscribe(data => {
                     data[3] = res;
@@ -124,7 +126,7 @@ export class SchoolService {
     }
 
     editCourse(data: any) {
-        return this.http.put('http://localhost:3001/course', data)
+        return this.http.put(`${this.url}/course`, data)
             .subscribe(res => {
                 this.getSchoolRequest().subscribe(data => {
                     data[3] = res;
@@ -140,7 +142,7 @@ export class SchoolService {
     }
 
     deleteCourse(id: number) {
-        return this.http.delete(`http://localhost:3001/course/${id}`)
+        return this.http.delete(`${this.url}/course/${id}`)
             .subscribe(res => {
                 this.getSchoolRequest().subscribe(data => {
                     data[3] = res;
@@ -156,7 +158,7 @@ export class SchoolService {
     }
 
     addStudent(data: any) {
-        return this.http.post('http://localhost:3001/student', data)
+        return this.http.post(`${this.url}/student`, data)
             .subscribe(res => {
                 this.getSchoolRequest().subscribe(data => {
                     data[3] = undefined;
@@ -172,7 +174,7 @@ export class SchoolService {
     }
 
     editStudent(data: any) {
-        return this.http.put('http://localhost:3001/student', data)
+        return this.http.put(`${this.url}/student`, data)
             .subscribe(res => {
                 this.getSchoolRequest().subscribe(data => {
                     data[3] = undefined;
@@ -188,7 +190,7 @@ export class SchoolService {
     }
 
     deleteStudent(id: number) {
-        return this.http.delete(`http://localhost:3001/student/${id}`)
+        return this.http.delete(`${this.url}/student/${id}`)
             .subscribe(res => {
                 this.getSchoolRequest().subscribe(data => {
                     data[3] = undefined;
