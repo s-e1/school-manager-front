@@ -8,7 +8,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## About
 
-This is a school managment application for managing the details of staff, students and courses of a school.
+This is a school management application for managing the details of staff, students and courses of a school.
 
 Three levels of access are given, depending on the user's role.
 
